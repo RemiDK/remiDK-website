@@ -3,6 +3,8 @@
 
 <template>
     <Header />
-    <Hero />
-    <div style="height: 1000vh;">dzzd</div>
+    <div>
+        <Hero />
+        <About />
+    </div>
 </template>

@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import mapleLeaf from '@/assets/svg/maple-leaf.svg?raw';
+
 const container = useTemplateRef('hero')
+let isHeroVisible = false;
+let heroContainerObserver: IntersectionObserver
 let animationFrameId: number
 let lastTime = 0
-const delay = 1000
 const maxLeaves = 10
 let leafCount = 0
 
@@ -11,23 +14,15 @@ const createLeaf = () => {
 
     const leaf = document.createElement('div')
     leaf.className = 'leaf'
-    leaf.innerHTML = `<svg viewBox="0 0 100 100" width="20" height="20" fill="currentColor">
-      <path d="M50,0 C60,20 80,20 100,30 C80,40 70,60 80,100 C60,80 40,80 20,100 C30,60 20,40 0,30 C20,20 40,20 50,0 Z" />
-    </svg>`;
+    leaf.innerHTML = mapleLeaf;
 
-    const size = Math.random() * 15 + 10
     const startPosX = Math.random() * window.innerWidth
     const rotation = Math.random() * 360
     const duration = Math.random() * 10 + 10
     const delayAnimation = Math.random() * 2
 
-    const colors = ["#9E2B25", "#2A5E45", "#8B5A2B"]
-    const color = colors[Math.floor(Math.random() * colors.length)]
     Object.assign(leaf.style, {
-        width: `${size}px`,
-        height: `${size}px`,
         left: `${startPosX}px`,
-        color,
         transform: `rotate(${rotation}deg)`
     })
     container.value?.appendChild(leaf)
@@ -47,20 +42,30 @@ const createLeaf = () => {
     }, delayAnimation * 1000)
 }
 
-const loop = (time: number) => {
-    if (time - lastTime >= delay && document.visibilityState === 'visible') {
-        createLeaf()
-        lastTime = time
-    }
-
-    animationFrameId = requestAnimationFrame(loop)
-}
-
 onMounted(() => {
-    animationFrameId = requestAnimationFrame(loop)
+    if (container.value) {
+        heroContainerObserver = new IntersectionObserver(
+            ([entry]) => {
+                isHeroVisible = entry.isIntersecting
+            },
+            { threshold: 0.3 }
+        )
+        heroContainerObserver.observe(container.value)
+    }
+    const loop = (timestamp = performance.now()) => {
+        if (document.visibilityState === 'visible' && isHeroVisible) {
+            if (timestamp - lastTime >= 1000) {
+                createLeaf()
+                lastTime = timestamp
+            }
+        }
+        animationFrameId = requestAnimationFrame(loop)
+    }
+    loop()
 })
 
 onBeforeUnmount(() => {
+    heroContainerObserver.disconnect()
     cancelAnimationFrame(animationFrameId)
 })
 </script>

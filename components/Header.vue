@@ -17,7 +17,7 @@ onMounted(() => {
 
 <template>
     <header ref="header" class="header">
-        <div class="container">
+        <div class="header-container">
             <div class="header__content">
                 <a href="#" class="header__logo">Kaede</a>
 

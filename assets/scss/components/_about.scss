@@ -1,0 +1,17 @@
+.about {
+    display: flex;
+    height: 800px;
+    max-height: 800px;
+    padding: 20px 0;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-size: 40px;
+
+    &__skills {
+        width: 40%;
+    }
+
+    &__canvas {
+        width: 60%;
+    }
+}

@@ -11,8 +11,12 @@
     "sass": "sass --watch ./assets/scss/main.scss:./assets/main.css --style compressed"
   },
   "dependencies": {
+    "@tresjs/cientos": "^4.3.0",
+    "@tresjs/core": "^4.3.3",
+    "@tresjs/nuxt": "^3.0.8",
     "gsap": "^3.13.0",
     "nuxt": "^3.17.1",
+    "three": "^0.176.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.1"
   }
