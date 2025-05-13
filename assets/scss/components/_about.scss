@@ -6,12 +6,44 @@
     background-color: #1a1a1a;
     color: #fff;
     font-size: 40px;
-
+    
     &__skills {
         width: 40%;
     }
-
+    
     &__canvas {
+        position: relative;
         width: 60%;
+        
+        &__controls-container {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 18px;
+            z-index: 500;
+        }
+        
+        &__controls {
+            width: 18rem;
+            padding: 10px;
+            background-color: #27272a;
+            border: 1px solid #3c3c40;
+            border-radius: 5px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            
+            &__header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #3c3c40;
+                
+                & h2 {
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+            }
+        }
     }
 }
