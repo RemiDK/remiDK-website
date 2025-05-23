@@ -75,7 +75,7 @@ onBeforeUnmount(() => {
         <div class="hero__overlay"></div>
         <div class="hero__content">
             <h1>Kaede</h1>
-            <p>Développeur informatique</p>
+            <p>French frontend developer</p>
         </div>
         <a href="#about" class="hero__button" aria-label="Scroll to next section">
             ↓

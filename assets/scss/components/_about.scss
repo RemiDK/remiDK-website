@@ -1,19 +1,69 @@
+@use '../abstracts/variables' as vars;
+
 .about {
     display: flex;
-    height: 800px;
-    max-height: 800px;
+    min-height: 100vh;
     padding: 20px 0;
-    background-color: #1a1a1a;
+    background-color: vars.$color-dark;
     color: #fff;
     font-size: 40px;
     
     &__skills {
+        position: relative;
         width: 40%;
+        padding-top: 10vh;
+
+        & h2 {
+            position: sticky;
+            top: vars.$header-height;
+            background-color: vars.$color-dark;
+            z-index: 10;
+            padding: 1rem 0;
+        }
+        
+        &__item {
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 15vh;
+            height: 70vh;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+
+            &.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            &__inner {
+                max-width: 90%;
+                padding: 2rem;
+                background-color: rgba(39, 39, 42, 0.5);
+                border: 1px solid vars.$color-light-dark;
+                border-radius: 8px;
+                transform: translateY(30px);
+                transition: transform 0.5s;
+                
+                & h3 {
+                    margin-bottom: 1rem;
+                    font-size: 2.5rem;
+                    color: #10b981;
+                }
+                
+                & p {
+                    font-size: 1.3rem;
+                    line-height: 1.6;
+                }
+            }
+        }
     }
     
     &__canvas {
-        position: relative;
+        position: sticky;
+        top: vars.$header-height + 10px;
         width: 60%;
+        height: 100vh;
         
         &__controls-container {
             display: flex;
@@ -28,7 +78,7 @@
         &__controls {
             width: 18rem;
             padding: 10px;
-            background-color: #27272a;
+            background-color: vars.$color-light-dark;
             border: 1px solid #3c3c40;
             border-radius: 5px;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);

@@ -3,8 +3,7 @@
 
 <template>
     <Header />
-    <div>
-        <Hero />
-        <About />
-    </div>
+    <Hero />
+    <About />
+    <Career />
 </template>

@@ -32,7 +32,7 @@
     }
     
     & input:checked + .form-slider {
-        background-color: vars.$color-success;
+        background-color: vars.$color-secondary;
     }
     
     & input:checked + .form-slider:before {
@@ -80,7 +80,7 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background-color: vars.$color-success;
+            background-color: vars.$color-secondary;
             border: none;
             cursor: pointer;
         }
@@ -90,7 +90,7 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background-color: vars.$color-success;
+            background-color: vars.$color-secondary;
             border: none;
             cursor: pointer;
         }

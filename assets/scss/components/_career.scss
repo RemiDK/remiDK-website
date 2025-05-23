@@ -1,0 +1,36 @@
+@use '../abstracts/variables' as vars;
+
+.career {
+    height: 100vh;
+    padding: 50px 0;
+    background: url('./washi.png');
+    
+    &__titles {
+        width: 100%;
+        
+        & h2 {
+            text-align: center;
+            &:first-of-type {
+                position: relative;
+                padding-bottom: 15px;
+                font-size: 60px;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    width: 50px;
+                    height: 1px;
+                    background-color: vars.$color-primary;
+                    transform: translateX(-50%);
+                }
+            }
+
+            &:last-of-type {
+                color: vars.$color-primary;
+                font-size: 30px;
+            }
+        }
+    }
+}
