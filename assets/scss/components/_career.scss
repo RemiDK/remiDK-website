@@ -1,35 +1,98 @@
 @use '../abstracts/variables' as vars;
 
 .career {
-    height: 100vh;
-    padding: 50px 0;
-    background: url('./washi.png');
+    position: relative;
+    background: url('/washi.png') repeat;
+    background-size: cover;
+    padding: 100px 0;
     
-    &__titles {
-        width: 100%;
+    &__title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 50px;
         
         & h2 {
-            text-align: center;
-            &:first-of-type {
-                position: relative;
-                padding-bottom: 15px;
-                font-size: 60px;
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    bottom: 0;
-                    left: 50%;
-                    width: 50px;
-                    height: 1px;
-                    background-color: vars.$color-primary;
-                    transform: translateX(-50%);
-                }
+            margin-bottom: 30px;
+            font-size: 80px;
+            color: vars.$color-primary;
+        }
+        
+        &__divider {
+            width: 150px;
+            height: 7px;
+            background-color: vars.$color-secondary;
+        }
+    }
+    
+    &__timeline {
+        position: relative;
+        width: 600px;
+        margin: 0 auto;
+        min-height: calc(100px + 160px * 5);
+        
+        &__line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: repeating-linear-gradient(to bottom,
+            vars.$color-light-dark,
+            vars.$color-light-dark 12px,
+            transparent 12px,
+            transparent 16px);
+            transform: translateX(-50%);
+            transition: height 1s ease-out;
+            
+            &__start,
+            &__end {
+                position: absolute;
+                left: 50%;
+                width: 20px;
+                height: 20px;
+                background-color: vars.$color-light-dark;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                transform: translateX(-50%);
             }
-
-            &:last-of-type {
+            
+            &__start {
+                top: 0;
+            }
+            
+            &__end {
+                bottom: 0;
+            }
+        }
+        
+        &__event {
+            position: absolute;
+            width: 45%;
+            padding: 20px;
+            border: 6px solid #E8DCCA;
+            border-radius: 20px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
+            opacity: 0;
+            transition: opacity 0.6s ease-out;
+            
+            & h3 {
                 color: vars.$color-primary;
                 font-size: 30px;
+            }
+            
+            &--left {
+                left: 0;
+                text-align: right;
+            }
+            
+            &--right {
+                right: 0;
+                text-align: left;
+            }
+            
+            &--visible {
+                opacity: 1;
             }
         }
     }
