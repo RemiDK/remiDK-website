@@ -8,6 +8,30 @@
         align-items: center;
         justify-content: space-between;
     }
+
+    &--contact {
+        display: flex;
+        flex-direction: column;
+
+        & label {
+            color: vars.$color-secondary;
+        }
+
+        & input, textarea {
+            padding: 20px 10px;
+            background-color: vars.$color-light-dark;
+            border: 1px solid vars.$color-secondary;
+            border-radius: 8px;
+            font-size: 2rem;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        & input:focus, textarea:focus {
+            outline: none;
+            border-color: vars.$color-primary;
+        }
+    }
 }
 
 .form-label {

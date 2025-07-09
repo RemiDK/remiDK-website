@@ -21,8 +21,8 @@ const skills: SkillItem[] = [
         description: 'CSS preprocessor that I use to structure my styles. A well-organized code to help you find your way around.'
     },
     {
-        title: 'Typescript',
-        description: 'JavaScript superset that I use to make my code more reliable with strict typing.'
+        title: 'Wordpress',
+        description: 'Simple website with visual builder or PHP development'
     }
 ]
 

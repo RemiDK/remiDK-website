@@ -49,32 +49,32 @@ const setEventRef = (el: HTMLElement | null, index: number) => {
         eventRefs.value[index] = el
 }
 
-const updateProgress = () => {
-    const visibleCount = events.value.filter(el => el.visible).length
+const updateProgress = (visibleCount: number) => {
     progressHeight.value = baseOffset + stepHeight * visibleCount
 }
 
 onMounted(() => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-            const index = eventRefs.value.findIndex(el => el === entry.target)
-            if (index !== -1) {
-                const wasVisible = events.value[index].visible
-                events.value[index].visible = entry.isIntersecting
-
-                if (wasVisible !== entry.isIntersecting) {
-                    updateProgress()
+            if (entry.isIntersecting) {
+                const index = eventRefs.value.findIndex(el => el === entry.target)
+                if (index !== -1 && !events.value[index].visible) {
+                    events.value[index].visible = true
+                    observer.unobserve(entry.target)
+                    const visibleCount = events.value.filter(el => el.visible).length
+                    updateProgress(visibleCount)
                 }
             }
         })
-    }, { threshold: 0.5 })
+    }, { threshold: 1 })
 
     eventRefs.value.forEach(el => {
-        if (el) observer.observe(el)
+        if (el)
+            observer.observe(el)
     })
-
     onUnmounted(() => {
         observer.disconnect()
     })
 })
+
 </script>

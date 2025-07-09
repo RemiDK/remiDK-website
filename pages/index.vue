@@ -6,4 +6,5 @@
     <Hero />
     <About />
     <Career />
+    <Contact />
 </template>
